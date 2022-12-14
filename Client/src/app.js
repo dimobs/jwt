@@ -1,5 +1,5 @@
-import page from '../node_modules/page/page.mjs';
-import { render } from '../node_modules/lit-html/lit-html.js';
+import page from '../node_modules/page/page.mjs.js';
+import { render } from '../node_modules/lit-html/lit-html.js.js';
 
 import { logout } from './api/data.js';
 import { dashboardPage } from './views/dashboard.js';
