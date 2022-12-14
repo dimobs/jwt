@@ -1,7 +1,7 @@
-import { html } from 'lit-html/lit-html.js.js';
+// import { html } from 'lit-html/lit-html.js';
+import { html } from '../../node_modules/lit-html/lit-html.js'
 import { getFurniture } from '../api/data.js';
 import { itemTemplate } from './common/item.js';
-
 
 const dashboardTemplate = (data) => html`
 <div class="row space-top">
