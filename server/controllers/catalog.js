@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const { isAuth, isOwner } = require('../middlewares/guards');
+const preload = require('../middlewares/preload');
 const api = require('../services/furniture');
 const mapErrors = require('../utils/mapper');
 
@@ -7,7 +9,7 @@ router.get('/', async (req, res) => {
     res.json(data);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', isAuth(), async (req, res) => {
     const item = {
         make: req.body.make,
         model: req.body.model,
@@ -15,7 +17,8 @@ router.post('/', async (req, res) => {
         description: req.body.description,
         price: req.body.price,
         img: req.body.img,
-        material: req.body.material
+        material: req.body.material,
+        owener: req.user_id
     }
 
     try {
@@ -28,12 +31,12 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
-    const item = await api.getById(req.params.id);
+router.get('/:id', preload(), (req, res) => {
+    const item = res.locals.item;
     res.json(item);
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', preload(), isOwner(), async (req, res) => {
     const itemId = req.params.id;
     const item = {
         make: req.body.make,
@@ -42,13 +45,14 @@ router.put('/:id', async (req, res) => {
         description: req.body.description,
         price: req.body.price,
         img: req.body.img,
-        material: req.body.material
+        material: req.body.material,
+       
     }
     const result = await api.update(itemId, item);
     res.status(200).json(result)
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', preload(), isOwner(), async (req, res) => {
     const itemId = req.params.id;
     await api.deleteById(itemId);
     res.status(204).end();
