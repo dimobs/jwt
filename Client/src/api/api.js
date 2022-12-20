@@ -1,5 +1,5 @@
 export const settings = {
-    host: ''
+    host: 'http://localhost:3000'
 };
 
 async function request(url, options) {
@@ -84,6 +84,6 @@ export async function logout() {
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userId');
-
+console.log(sessionStorage);
     return result;
 }
