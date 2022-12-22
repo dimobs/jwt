@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { logout } = require('../../client/src/api/api');
 const { isGuest } = require('../middlewares/guards');
 const { register, login } = require('../services/users');
+const { logout } = require('../services/users');
 
 router.post('/register', isGuest(), async (req, res) => {
     try {

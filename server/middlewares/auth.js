@@ -12,4 +12,4 @@ module.exports = () => ((req, res) => {
     } catch (err) {
         res.status(489).json({ message: 'Invalid token. Pleace sing in' })
     }
-})
+});

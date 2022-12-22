@@ -5,6 +5,7 @@ const api = require('../services/furniture');
 const mapErrors = require('../utils/mapper');
 
 router.get('/', async (req, res) => {
+    console.log('gettt from catalog 8');
     const data = await api.getAll();
     res.json(data);
 });

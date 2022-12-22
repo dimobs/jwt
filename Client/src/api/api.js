@@ -1,5 +1,5 @@
 export const settings = {
-    host: 'http://localhost:3000'
+    host: 'http://localhost:3030'
 };
 
 async function request(url, options) {

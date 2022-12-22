@@ -1,6 +1,7 @@
 const Item = require('../models/Item');
 
 async function getAll() {
+    console.log('seervice furniture 4');
     return Item.find({})
 }
 

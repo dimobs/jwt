@@ -2,9 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const cors = require('./middlewares/cors');
+const auth = require('./middlewares/auth');
 const catalogController = require('./controllers/catalog');
 const userController = require('./controllers/users');
-const auth = require('./middlewares/auth');
 
 start();
 
