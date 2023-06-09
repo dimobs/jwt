@@ -2,16 +2,16 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const cors = require('./middlewares/cors');
-const auth = require('./middlewares/auth');
+// const auth = require('./middlewares/auth');
 const catalogController = require('./controllers/catalog');
-const userController = require('./controllers/users');
+// const userController = require('./controllers/users');
 
 start();
 
 async function start(params) {
 
     try {
-        await mongoose.connect('mongodb://localhost:27017/furniture', {
+        await mongoose.connect('mongodb://127.0.0.1:27017/furniture', {
             useUnifiedTopology: true,
             useNewUrlParser: true
         });
@@ -25,9 +25,9 @@ async function start(params) {
     const app = express();
     app.use(express.json());
     app.use(cors());
-    app.use(auth())
+    // app.use(auth())
     app.use('/data/catalog', catalogController);
-    app.use('/users', userController)
+    // app.use('/users', userController)
 
 app.get('/', (req, res) => res.json({ message: 'REST service operational '}))
 

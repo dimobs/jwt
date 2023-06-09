@@ -10,6 +10,7 @@ module.exports = () => ((req, res) => {
         }
         next();
     } catch (err) {
-        res.status(489).json({ message: 'Invalid token. Pleace sing in' })
+        req.headers = []
+        res.status(489).json({ message: 'Invalid token. Pleace sing in!' })
     }
 });
